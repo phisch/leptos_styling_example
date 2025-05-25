@@ -1,16 +1,15 @@
 use leptos::prelude::*;
-use leptos_styling::inline_style_sheet;
+use leptos_styling::{StyleSheets, inline_style_sheet};
 
 fn main() {
     console_error_panic_hook::set_once();
-    leptos::mount::mount_to_body(|| view! { <p>"Hello, world!"</p> })
+    leptos_styling::init();
+    leptos::mount::mount_to_body(|| view! { <StyleSheets/><MyButtons/> })
 }
 
-inline_style_sheet! {red_button, "red_button",
+inline_style_sheet! {blue_button, "blue_button",
     .button {
         background-color: red;
-        padding: 8px 16px;
-        border-radius: 4px;
     }
 }
 
@@ -18,7 +17,7 @@ inline_style_sheet! {red_button, "red_button",
 pub fn MyButtons() -> impl IntoView {
     view! {
         <div>
-            <button class=red_button::BUTTON>"Red Button"</button>
+            <button class=blue_button::BUTTON>"Red Button"</button>
         </div>
     }
 }
